@@ -26,5 +26,7 @@ int sys_uptime(void);
 int sys_printpid(void);
 int sys_numtimesgetpid(void);
 int sys_FirstPart(void);
+int sys_SecondPart(void);
+int sys_ThirdPart(void);
 
 #endif // _SYSFUNC_H_

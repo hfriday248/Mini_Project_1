@@ -17,6 +17,8 @@ USER_PROGS := \
 	ThisismyPID\
 	numtimestester\
 	test_firstpart\
+	test_secondpart\
+	test_thirdpart\
 	tester\
 	usertests\
 	wc\

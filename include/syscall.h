@@ -26,5 +26,7 @@
 #define SYS_printpid 22
 #define SYS_numtimesgetpid 23
 #define SYS_FirstPart 24
+#define SYS_SecondPart 25
+#define SYS_ThirdPart 26
 
 #endif // _SYSCALL_H_

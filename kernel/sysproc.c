@@ -54,6 +54,18 @@ sys_FirstPart(void)
 }
 
 int
+sys_SecondPart(void)
+{
+ return partBcount;
+}
+
+int
+sys_ThirdPart(void)
+{
+ return partCcount;
+}
+
+int
 sys_numtimesgetpid(void)
 {
  return counter;

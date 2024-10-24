@@ -245,6 +245,35 @@ wait(void)
   }
 }
 
+int 
+ps(void)
+{
+  struct proc *p;
+  char *state;
+
+  cprintf("PID\tState\t\tMemory Size\tProcess Name\n");
+
+  acquire(&ptable.lock);
+  for(p=ptable.proc; p < &ptable.proc[NPROC]; p++) {
+  	if(p->state == UNUSED) {
+		continue;
+	  }
+	if(p->state==SLEEPING) {
+		state="SLEEPING";
+	} else if (p->state==RUNNING) {
+		state="RUNNING";
+	} else if (p->state==ZOMBIE) {
+		state="ZOMBIE";
+	} else {
+		state="OTHER";
+	}
+  cprintf("PID: %d\tState: %s\tMemory Size: %d\tProcess Name: %s\n", p->pid, state, p->sz, p->name);
+  }
+  release(&ptable.lock);
+  
+  return 0;
+}
+
 // Per-CPU process scheduler.
 // Each CPU calls scheduler() after setting itself up.
 // Scheduler never returns.  It loops, doing:

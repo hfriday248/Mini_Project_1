@@ -109,6 +109,7 @@ static int (*syscalls[])(void) = {
 [SYS_FirstPart] sys_FirstPart,
 [SYS_SecondPart] sys_SecondPart,
 [SYS_ThirdPart] sys_ThirdPart,
+[SYS_ps] sys_ps,
 };
 
 // Called on a syscall trap. Checks that the syscall number (passed via eax)

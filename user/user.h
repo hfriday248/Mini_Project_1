@@ -30,6 +30,7 @@ int numtimesgetpid(void);
 int FirstPart(void);
 int SecondPart(void);
 int ThirdPart(void);
+int ps(void);
 
 // user library functions (ulib.c)
 int stat(char*, struct stat*);

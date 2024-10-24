@@ -28,5 +28,6 @@ int sys_numtimesgetpid(void);
 int sys_FirstPart(void);
 int sys_SecondPart(void);
 int sys_ThirdPart(void);
+int sys_ps(void);
 
 #endif // _SYSFUNC_H_

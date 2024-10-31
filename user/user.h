@@ -32,7 +32,7 @@ int FirstPart(void);
 int SecondPart(void);
 int ThirdPart(void);
 int ps(void);
-int getpinfo(struct pstat* pInfo);
+int getpinfo(struct pstat*);
 
 // user library functions (ulib.c)
 int stat(char*, struct stat*);

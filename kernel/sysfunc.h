@@ -29,5 +29,6 @@ int sys_FirstPart(void);
 int sys_SecondPart(void);
 int sys_ThirdPart(void);
 int sys_ps(void);
+int sys_getpinfo(void);
 
 #endif // _SYSFUNC_H_

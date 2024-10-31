@@ -5,6 +5,7 @@
 #include "mmu.h"
 #include "proc.h"
 #include "sysfunc.h"
+#include "pstat.h"
 
 int counter =0;
 
@@ -75,6 +76,20 @@ int
 sys_numtimesgetpid(void)
 {
  return counter;
+}
+
+int
+sys_getpinfo(void)
+{
+  struct pstat *pInfo;
+  if(argptr(0, (void *)&pInfo, sizeof(*pInfo)) < 0 ){
+	  return -1;
+  }
+  if(pInfo == NULL){
+	  return -1;
+  }
+  getpinfo(pInfo);
+  return 0;
 }
 
 int

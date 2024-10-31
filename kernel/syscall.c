@@ -7,6 +7,7 @@
 #include "syscall.h"
 #include "sysfunc.h"
 
+extern int sys_getpinfo(void);
 
 // User code makes a system call with INT T_SYSCALL.
 // System call number in %eax.
@@ -110,6 +111,7 @@ static int (*syscalls[])(void) = {
 [SYS_SecondPart] sys_SecondPart,
 [SYS_ThirdPart] sys_ThirdPart,
 [SYS_ps] sys_ps,
+[SYS_getpinfo] sys_getpinfo,
 };
 
 // Called on a syscall trap. Checks that the syscall number (passed via eax)

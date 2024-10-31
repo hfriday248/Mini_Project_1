@@ -29,5 +29,6 @@
 #define SYS_SecondPart 25
 #define SYS_ThirdPart 26
 #define SYS_ps 27
+#define SYS_getpinfo 28
 
 #endif // _SYSCALL_H_

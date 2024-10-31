@@ -5,6 +5,7 @@
 #include "x86.h"
 #include "proc.h"
 #include "spinlock.h"
+#include "pstat.h"
 
 struct {
   struct spinlock lock;
@@ -45,6 +46,7 @@ allocproc(void)
 found:
   p->state = EMBRYO;
   p->pid = nextpid++;
+  p->numTicks = 0;
   release(&ptable.lock);
 
   // Allocate kernel stack if possible.
@@ -274,6 +276,31 @@ ps(void)
   return 0;
 }
 
+int
+getpinfo(struct pstat* pInfo)
+{
+  struct proc *p;
+  int i = 0;
+  acquire(&ptable.lock);
+  for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
+	  if(p->state == ZOMBIE || p->state == EMBRYO){
+		  continue;
+	  }
+	  if(p->state == UNUSED){
+		  pInfo->inuse[i] = 0;
+	  }	
+	  else{
+		  pInfo->inuse[i] = 1;
+	  }
+	  pInfo->pid[i] = p->pid;
+	  pInfo->ticks[i] = p->numTicks;
+	  pInfo->size[i] = p->sz;
+	  i++;
+  }
+  release(&ptable.lock);
+  return 0;
+}
+
 // Per-CPU process scheduler.
 // Each CPU calls scheduler() after setting itself up.
 // Scheduler never returns.  It loops, doing:
@@ -302,6 +329,9 @@ scheduler(void)
       proc = p;
       switchuvm(p);
       p->state = RUNNING;
+
+      p->numTicks += 1; //update the number of time schedule in cpu
+
       swtch(&cpu->scheduler, proc->context);
       switchkvm();
 

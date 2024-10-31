@@ -1,2 +1,2 @@
 user/sh.d user/sh.o: user/sh.c include/types.h user/user.h \
- include/fcntl.h
+ include/pstat.h include/param.h include/fcntl.h

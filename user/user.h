@@ -1,5 +1,6 @@
 #ifndef _USER_H_
 #define _USER_H_
+#include "pstat.h"
 
 struct stat;
 
@@ -31,6 +32,7 @@ int FirstPart(void);
 int SecondPart(void);
 int ThirdPart(void);
 int ps(void);
+int getpinfo(struct pstat* pInfo);
 
 // user library functions (ulib.c)
 int stat(char*, struct stat*);

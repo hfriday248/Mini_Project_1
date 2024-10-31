@@ -23,6 +23,9 @@ USER_PROGS := \
 	ptester\
 	usertests\
 	wc\
+	childrenTester\
+	accessTable\
+	store\
 	zombie
 	
 
